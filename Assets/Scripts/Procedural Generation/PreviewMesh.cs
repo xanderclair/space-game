@@ -24,7 +24,8 @@ public class PreviewMesh : MonoBehaviour
     public void CreateAndDisplayMesh()
     {
         //Func<Vector3, float> Source = pt => -NoisePlane(pt + offset, 10.0f);
-        Func<Vector3, float> Source = pt => -Torus(pt + offset, new Vector2(15.0f, 20.0f));
+
+        Func<Vector3, float> Source = pt => -Torus(pt + offset, new Vector2(25.0f, 10.0f));
 
         VoxelOctree octree = VoxelOctree.CreateBasedOnFunction(Source, Vector3.zero, Vector3.one * 100.0f, 5);
 

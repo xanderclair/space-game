@@ -82,11 +82,6 @@ public class MeshGenerator
         public int[] nodeIndices;
     }
 
-    struct Vertex
-    {
-        public Vector3 position;
-        public Vector3 normal;
-    };
     /*
     public static Mesh GenerateMesh(Vector3 center, Vector3 size, Func<Vector3, float> Source)
     {
@@ -152,11 +147,20 @@ public class MeshGenerator
             }
         }
 
+        for (int i = 0; i < 12; i++)
+        {
+            Vector3 pt0 = fromOctree.rootAABB.min + Vector3.Scale(VoxelOctree.octantOrder[edgeTraversalOrder[i, 0]], fromOctree.rootAABB.size);
+            Vector3 pt1 = fromOctree.rootAABB.min + Vector3.Scale(VoxelOctree.octantOrder[edgeTraversalOrder[i, 1]], fromOctree.rootAABB.size);
+            UnityEngine.Debug.DrawLine(pt0, pt1, Color.black, 1.0f);        
+        }
+
         Mesh mesh = new Mesh
         {
             vertices = vertexData.positions,
             triangles = triangles
         };
+
+        mesh.RecalculateNormals();
 
         return mesh;
     }
